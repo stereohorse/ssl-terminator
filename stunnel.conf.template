@@ -1,0 +1,14 @@
+foreground = yes
+
+cert = /awesome.cert
+key = /awesome.key
+
+setuid = stunnel
+setgid = stunnel
+
+socket = l:TCP_NODELAY=1
+socket = r:TCP_NODELAY=1
+
+[https]
+accept  = 0.0.0.0:443
+connect = ${PUBLIC_IP}:${TARGET_PORT}

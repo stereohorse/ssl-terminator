@@ -2,7 +2,6 @@
 
 set -euxo pipefail
 
-
 # create new cert for specific IP
 openssl req \
   -new \
@@ -16,10 +15,10 @@ openssl req \
 
 # set that IP in nginx config
 envsubst '\$PUBLIC_IP \$TARGET_PORT' \
-  < nginx.conf.template > /etc/nginx/nginx.conf
+  < stunnel.conf.template > /etc/stunnel/stunnel.conf
 
 # show config
-cat /etc/nginx/nginx.conf
+cat /etc/stunnel/stunnel.conf
 
 # start ssl termination
-nginx -g 'daemon off;'
+stunnel
