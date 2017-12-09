@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ -z "$VAR" ]; then
+if [ -z "$PUBLIC_IP" ]; then
   PUBLIC_IP=$(ifconfig | grep 'inet ' | grep -v '127.0.0.1' | cut -d ' ' -f2)
 fi
 
