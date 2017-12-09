@@ -23,3 +23,12 @@ $ docker run -it --rm \
   -p <external port>:443 \
   0x06065a/ssl-terminator
 ```
+
+## Test
+
+```bash
+$ npm install -g wscat
+$ FROM_PORT=1111 TO_PORT=2222 ./run
+$ wscat -l 2222
+$ wscat -n -c wss://localhost:1111
+```
