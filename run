@@ -1,0 +1,13 @@
+#!/bin/bash
+
+if [ -z "$VAR" ]; then
+  PUBLIC_IP=$(ifconfig | grep 'inet ' | grep -v '127.0.0.1' | cut -d ' ' -f2)
+fi
+
+echo "+ public IP: $PUBLIC_IP"
+
+docker run -it --rm \
+  -e PUBLIC_IP=$PUBLIC_IP \
+  -e TARGET_PORT=$TO_PORT \
+  -p $FROM_PORT:443 \
+  0x06065a/ssl-terminator
